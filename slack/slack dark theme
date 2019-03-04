@@ -1,0 +1,22 @@
+Github link: https://gist.github.com/focus97/21a8b7f130f0afd0b26f0d84f3a02d2b
+Add the below code to the file: /Applications/Slack.app/Contents/Resources/app.asar.unpacked/src/static/ssb-interop.js
+
+document.addEventListener('DOMContentLoaded', function() {
+
+    let tt__customCss = `
+        body, .channel_header, #footer, .channel_title_info, #channel_topic_text { background: #252526; } 
+        .c-message__body { color: #efefef; } 
+        #team_menu, .p-channel_sidebar { background: #252526 !important; } 
+        .c-presence--active {color: rgb(27, 139, 210) !important;} 
+        nav.p-channel_sidebar .p-channel_sidebar__channel--selected, .p-channel_sidebar__link--selected, .c-message_list__day_divider__label__pill, .p-message_pane .c-message_list.c-virtual_list--scrollbar > .c-scrollbar__hider:before { color: #f8f8f8 !important; background: #666699 !important; } 
+        .c-message_list__day_divider__line { border-top-color: #666699 !important} 
+        #msg_input, #primary_file_button { background: #121212 !important; } 
+        #msg_form #msg_input { border-color: transparent; }
+    `;
+    $.ajax({
+        url: 'https://cdn.rawgit.com/laCour/slack-night-mode/master/css/raw/black.css',
+        success: function(css) {
+            $('<style></style>').appendTo('head').html(css + tt__customCss);
+        }
+    });
+});
